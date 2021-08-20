@@ -29,13 +29,22 @@ func main() {
 	}
 
 	r := http.NewChiRouter()
-	c := controller.NewUtilityController()
-	serve(r, c)
+
+	rc := controller.NewRepoController()
+	uc := controller.NewUtilityController()
+	ec := controller.NewErrorController()
+
+	mc := controller.NewController(rc, uc, ec)
+
+	serve(r, mc)
 }
 
-func serve(r http.Router, c controller.UtilityController) {
-	r.Get("/health", c.Health)
-	r.Get("/version", c.Version)
+func serve(r http.Router, c controller.Controller) {
+	r.Get("/", c.Utility.Health)
+	r.Get("/health", c.Utility.Health)
+	r.Get("/version", c.Utility.Version)
+
+	r.Get("/user/{userID}", c.Repo.User)
 
 	r.Serve(":8080")
 }
