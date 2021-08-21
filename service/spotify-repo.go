@@ -51,6 +51,6 @@ func (*repository) updateCurrentlyPlaying(db *gorm.DB) {
 	for _, i := range friends {
 		activity := utility.GetActivity(i)
 		fmt.Println(activity.Track.Album.Name)
-		db.Create(&activity)
+		db.Save(&activity)
 	}
 }
