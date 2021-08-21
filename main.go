@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"gotify-profile-tracker/controller"
+	"gotify-profile-tracker/database"
 	"gotify-profile-tracker/http"
+	"gotify-profile-tracker/service"
 	"os"
-
-	gotify "github.com/nathanjukes/GoTify-BuddyList/buddyList"
 )
 
 func init() {
@@ -18,16 +18,6 @@ func init() {
 func main() {
 	fmt.Println("start")
 
-	cookie := "AQC75BrTMdaqZSerrutLz7Bv8iLjIN_7MAc_QotbSU0hH9w5IQcBTN37Zpc274TVKYvol4r0W14ZCHk1atln5Q-WtsMJp3p28CfeE9RblQ8vJ-GX6MabsRxsud_d0jZe_SP7g2Vl5GqkqHrzwc67CpLsnr3MET_T_Y2_5134"
-
-	gotify.NewScopedInstance(cookie)
-
-	g := gotify.NewScopedInstance(cookie)
-	bl, _ := g.BuddyList()
-	for _, i := range bl.Friends {
-		fmt.Println(i.User.Name + i.Track.Name)
-	}
-
 	r := http.NewChiRouter()
 
 	rc := controller.NewRepoController()
@@ -36,6 +26,14 @@ func main() {
 
 	mc := controller.NewController(rc, uc, ec)
 
+	// Setup DB
+	Idb := database.GetPostgresDB()
+	db := Idb.GetDB()
+
+	// Keeps database updated
+	service.NewSpotifyRepository().DatabaseRefresher(db)
+
+	// Starts serving
 	serve(r, mc)
 }
 
