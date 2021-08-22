@@ -1,8 +1,14 @@
 package service
 
-import "gorm.io/gorm"
+import (
+	"gotify-profile-tracker/entity"
+
+	"gorm.io/gorm"
+)
 
 type Repository interface {
-	DatabaseRefresher(*gorm.DB)
+	DatabaseRefresher()
 	updateCurrentlyPlaying(*gorm.DB)
+	GetUserActivity(id string) []entity.Activity
+	GetActivity() []entity.Activity
 }

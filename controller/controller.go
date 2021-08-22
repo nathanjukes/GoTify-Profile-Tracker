@@ -4,6 +4,7 @@ import "net/http"
 
 type RepoController interface {
 	User(w http.ResponseWriter, r *http.Request)
+	Activity(w http.ResponseWriter, r *http.Request)
 }
 
 type UtilityController interface {

@@ -29,9 +29,9 @@ func (*postgresDB) GetDB() *gorm.DB {
 
 func MigrateDB(db *gorm.DB) {
 	// Migrate schema
-	db.AutoMigrate(&entity.Activity{})
 	db.AutoMigrate(&entity.User{})
 	db.AutoMigrate(&entity.Album{})
 	db.AutoMigrate(&entity.Artist{})
 	db.AutoMigrate(&entity.Track{})
+	db.AutoMigrate(&entity.Activity{})
 }
