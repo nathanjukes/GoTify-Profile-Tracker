@@ -28,6 +28,10 @@ func (*chiRouter) Get(uri string, f func(w http.ResponseWriter, r *http.Request)
 	chiDispatcher.Get(uri, f)
 }
 
+func (*chiRouter) Post(uri string, f func(w http.ResponseWriter, r *http.Request)) {
+	chiDispatcher.Post(uri, f)
+}
+
 func (*chiRouter) Serve(port string) {
 	log.Fatal(http.ListenAndServe(port, chiDispatcher))
 }

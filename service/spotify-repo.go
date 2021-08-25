@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"gotify-profile-tracker/entity"
 	"gotify-profile-tracker/utility"
 	"log"
@@ -53,7 +52,6 @@ func (*repository) updateCurrentlyPlaying(db *gorm.DB) {
 	// Insert activity into database
 	for _, i := range friends {
 		activity := utility.GetActivity(i)
-		fmt.Println(activity.Track.Album.Name)
 		db.Save(&activity)
 	}
 }
