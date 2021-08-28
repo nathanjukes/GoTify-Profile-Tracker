@@ -3,6 +3,7 @@ package database
 import (
 	"gotify-profile-tracker/entity"
 	"log"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -16,7 +17,7 @@ func GetPostgresDB() Database {
 }
 
 func (*postgresDB) GetDB() *gorm.DB {
-	const connStr = "host=localhost user=postgres password=root dbname=gotify port=5432 sslmode=disable"
+	connStr := os.Getenv("dbString")
 	db, err := gorm.Open(postgres.Open(connStr), &gorm.Config{Logger: logger.Default.LogMode(logger.Silent)})
 
 	if err != nil {

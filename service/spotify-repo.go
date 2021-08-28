@@ -4,6 +4,7 @@ import (
 	"gotify-profile-tracker/entity"
 	"gotify-profile-tracker/utility"
 	"log"
+	"os"
 	"time"
 
 	gotify "github.com/nathanjukes/GoTify-BuddyList/buddyList"
@@ -42,7 +43,7 @@ func (r *repository) DatabaseRefresher() {
 
 func (*repository) updateCurrentlyPlaying(db *gorm.DB) {
 	// Get activity
-	cookie := "AQC75BrTMdaqZSerrutLz7Bv8iLjIN_7MAc_QotbSU0hH9w5IQcBTN37Zpc274TVKYvol4r0W14ZCHk1atln5Q-WtsMJp3p28CfeE9RblQ8vJ-GX6MabsRxsud_d0jZe_SP7g2Vl5GqkqHrzwc67CpLsnr3MET_T_Y2_5134"
+	cookie := os.Getenv("SDPC_COOKIE")
 
 	gotify.NewScopedInstance(cookie)
 	g := gotify.NewScopedInstance(cookie)

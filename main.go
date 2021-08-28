@@ -1,26 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"gotify-profile-tracker/controller"
 	"gotify-profile-tracker/database"
 	"gotify-profile-tracker/http"
 	"gotify-profile-tracker/service"
+	"log"
 	"os"
 )
 
 func init() {
 	// Environment variable setup
-	// TODO: Change this hardcoded implementation into a docker v.c implementation
 	os.Setenv("version", "development")
-	os.Setenv("CLIENT_ID", "6a90e4b03ccb4c63b7784e5e30d89eb9")
-	os.Setenv("CLIENT_SECRET", "2b93e5e1ae1c45259694f4d5a3f914f5")
-	os.Setenv("ACCESS_TOKEN", "BQBN7H_Mlvx1PXYvXkrkLqarXo36LH3qeKX_WoRTwQG-gzs3qHUFHhAbOTFRgP15TX7fnokLRP4C5s4nZDnviUcaGD5Ee6P9rpj0rpMK763daieVRZuhX7o1Jhi8ZZ-PKQj8o2FFFAHm9NFeqgVg")
-	os.Setenv("REFRESH_TOKEN", "AQBD80DsPjdEu3FaauvdtbkhlMwATuplxXRf4Ej_OCFhg4k22R0rJ7lYTTXDn9SOAMLLD35otyYTznPY0Fj17Mv4cLVAJFCv6TWjYyMewkXcCn_k4pVcoGk5fzxmnKBW4es")
+
+	// Personal
+	os.Setenv("CLIENT_ID", "")
+	os.Setenv("CLIENT_SECRET", "")
+	os.Setenv("ACCESS_TOKEN", "")
+	os.Setenv("REFRESH_TOKEN", "")
+	os.Setenv("SDPC_COOKIE", "")
 }
 
 func main() {
-	fmt.Println("start")
+	log.Println("start")
 
 	r := http.NewChiRouter()
 
