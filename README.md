@@ -26,24 +26,90 @@ GoTify is a collection of Spotify utilities written in Go by myself. GoTify Prof
 
 - curl http://localhost:8081/activity
 
+### Example Response
+
+Array containing this object:
+
+```json
+{
+   "timestamp":1630585689720,
+   "time":"2021-09-02T13:28:09.72+01:00",
+   "user_id":"spotify:user:21dnoih5aa7vkozsvczwoe4za",
+   "user":{
+      "uri":"spotify:user:21dnoih5aa7vkozsvczwoe4za",
+      "name":"Lars.On.Spotify",
+      "imageUrl":"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=541218032718353&height=50&width=50&ext=1632658424&hash=AeQSx5CUG26hrnhmIXA"
+   },
+   "track_id":"spotify:track:7yq4Qj7cqayVTp3FF9CWbm",
+   "track":{
+      "uri":"spotify:track:7yq4Qj7cqayVTp3FF9CWbm",
+      "name":"Riptide",
+      "imageUrl":"http://i.scdn.co/image/ab67616d0000b273d3ce97395ff522b0d70c1094",
+      "album_id":"spotify:album:6rIbiUMmZJfqJRnXhVxFvg",
+      "album":{
+         "uri":"spotify:album:6rIbiUMmZJfqJRnXhVxFvg",
+         "name":"Dream Your Life Away"
+      },
+      "artist_id":"spotify:artist:10exVja0key0uqUkk6LJRT",
+      "artist":{
+         "uri":"spotify:artist:10exVja0key0uqUkk6LJRT",
+         "name":"Vance Joy"
+      }
+   }
+}
+```
+
 - curl http://localhost:8081/user/spotify:user:{SpotifyID}
 
+### Example Response
+
+Array containing this object:
+
+```json
+{
+   "timestamp":1630585689720,
+   "time":"2021-09-02T13:28:09.72+01:00",
+   "user_id":"spotify:user:21dnoih5aa7vkozsvczwoe4za",
+   "user":{
+      "uri":"spotify:user:21dnoih5aa7vkozsvczwoe4za",
+      "name":"Lars.On.Spotify",
+      "imageUrl":"https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=541218032718353&height=50&width=50&ext=1632658424&hash=AeQSx5CUG26hrnhmIXA"
+   },
+   "track_id":"spotify:track:7yq4Qj7cqayVTp3FF9CWbm",
+   "track":{
+      "uri":"spotify:track:7yq4Qj7cqayVTp3FF9CWbm",
+      "name":"Riptide",
+      "imageUrl":"http://i.scdn.co/image/ab67616d0000b273d3ce97395ff522b0d70c1094",
+      "album_id":"spotify:album:6rIbiUMmZJfqJRnXhVxFvg",
+      "album":{
+         "uri":"spotify:album:6rIbiUMmZJfqJRnXhVxFvg",
+         "name":"Dream Your Life Away"
+      },
+      "artist_id":"spotify:artist:10exVja0key0uqUkk6LJRT",
+      "artist":{
+         "uri":"spotify:artist:10exVja0key0uqUkk6LJRT",
+         "name":"Vance Joy"
+      }
+   }
+}
+```
 
 ## Personal use
 
 <h3>Environment Variables needed</h3>
+<h4>To set the environment variables, insert them into the init() method of the main.go file</h4>
 
 - '<b>Cookie</b>' - sd_pc cookie from Spotify's Web Player
     - After you log into the Spotify web player, you need to find the cookie named 'sp_dc' and get the value of it
     - This cookie expires every year, so if used in production, it will be best to automate the collection of it
 
-- '<b>Client ID</b>' - 
+- '<b>Client ID</b>' - Follow the 'Register your App' tutorial <a href="https://developer.spotify.com/documentation/general/guides/app-settings/">here!</a> 
     
-- '<b>Client Secret</b>' - 
+- '<b>Client Secret</b>' - Follow the 'Register your App' tutorial <a href="https://developer.spotify.com/documentation/general/guides/app-settings/">here!</a> 
     
-- '<b>Access Token</b>' -
+- '<b>Access Token</b>' - Follow this: <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Link!</a>. Once you have the Access and Refresh token, insert them into the init() method. Be sure to request the 'user-follow-modify' scope.
     
-- '<b>Refresh Token</b>' - 
+- '<b>Refresh Token</b>' - Follow this: <a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow">Link!</a>. Once you have the Access and Refresh token, insert them into the init() method. Be sure to request the 'user-follow-modify' scope.
     
 ## Change Log
 
