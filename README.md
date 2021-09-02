@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">A REST API web server built in Go with endpoints for viewing your Friend's Spotify activity!</h4>
-<h5 align="center">Uses my Go package <a href="https://github.com/nathanjukes/GoTify-BuddyListt">Spotify-BuddyList</a> for grabbing the data!</h5>
+<h5 align="center">Uses my Go package <a href="https://github.com/nathanjukes/GoTify-BuddyList">Spotify-BuddyList</a> for grabbing the data!</h5>
 
 
 <p align="center">
